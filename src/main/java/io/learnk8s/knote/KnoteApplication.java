@@ -34,13 +34,39 @@ public class KnoteApplication {
 }
 
 @Document(collection = "notes")
-@Setter @Getter @NoArgsConstructor @AllArgsConstructor
 class Note {
     @Id
     private String id;
     private String description;
+
+    public Note() {
+    }
+
+    public Note(String id, String description) {
+        this.id = id;
+        this.description = description;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
-    public String toString() { return description; }
+    public String toString() {
+        return description;
+    }
 }
 
 interface NotesRepository extends MongoRepository<Note, String> {}
